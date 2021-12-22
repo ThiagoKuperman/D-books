@@ -128,6 +128,8 @@ function vaciarLocalStorage() {
     localStorage.clear();
 }
 
+$(".query").css("color", "rgb(196,203,183)")
+
 
 
 
