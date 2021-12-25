@@ -128,7 +128,11 @@ function vaciarLocalStorage() {
     localStorage.clear();
 }
 
-$(".query").css("color", "rgb(196,203,183)")
+$(".query").css("color", "rgb(196,203,183)");
+
+$("#ocultar-foot").click(function(){
+    $("#footer").toggle("fast");
+})
 
 
 
