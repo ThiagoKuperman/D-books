@@ -1,5 +1,6 @@
 .img-book{
-    height: 375px;
+    width: 267px;
+    height: 365px;
 }
 .logo{
     height: 70px;
@@ -33,15 +34,10 @@ header {
     }
 }
 
-.borrar-platilo {
-    background-color: #fbaf32;
-    border-radius: 50%;
-    padding: 5px 10px;
-    text-decoration: none;
-    color:rgb(71, 71, 71);
-    font-weight: bold;
-
-}
+.book-list{
+    margin-top: 50px;
+    visibility: hidden;
+  }
 
 ul {
     list-style: none;
@@ -71,7 +67,7 @@ ul {
     background: #17181b;
     padding: 20px;
 }
-.vacio {
+.estado {
     padding: 10px;
     background-color: #fbaf32;
     text-align: center;
@@ -81,6 +77,10 @@ ul {
 .button {
     background-color: #fbaf32;
     color: rgb(255, 255, 255);
+}
+.button-p{
+    background-color: rgb(255, 255, 255);
+    color:  #fbaf32;
 }
 .contenido-hero {
     margin-top: 80px;
@@ -93,6 +93,7 @@ ul {
 .contenido-hero form #buscador {
     height: 50px;
     margin-bottom: 0;
+    color: black;
 }
 .contenido-hero form .submit-buscador {
     position: absolute;
@@ -142,7 +143,7 @@ ul {
     background-image: url(../img/lapiz.png);
 }
 
-#lista-platillos .row {
+.libros .row {
     margin-bottom: 20px;
 }
 .agregar-carrito{
@@ -153,6 +154,7 @@ ul {
     border: 1px solid rgba(255, 255, 255, 0.05);
     background: #1d2124;
 }
+
 @media (min-width:550px){
     .card {
         text-align: left;
