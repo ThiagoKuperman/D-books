@@ -137,7 +137,7 @@ $(document).ready(function() {
     var item;
     var salida = document.getElementById("resultados");
     var bookUrl = "https://www.googleapis.com/books/v1/volumes?q=";
-    var placeHldr = '<img src="https://via.placeholder.com/150">';
+    var placeHldr = '<img src="https://via.placeholder.com/150" class="img-book">';
     var searchData;
   
     $("#buscar").click(function() {
@@ -175,7 +175,7 @@ $(document).ready(function() {
      //    function para mostrar los resultados en index
 
      function displayResults(response) {
-        for (var i = 0; i < response.items.length; i+=2) {
+        for (var i = 0; i < response.items.length; i+=3) {
             item = response.items[i];
             title1 = item.volumeInfo.title;
             author1 = item.volumeInfo.authors;
@@ -192,34 +192,40 @@ $(document).ready(function() {
             bookIsbn2 = item2.volumeInfo.industryIdentifiers[1].identifier
             bookImg2 = (item2.volumeInfo.imageLinks) ? item2.volumeInfo.imageLinks.thumbnail : placeHldr ;
 
+            item3 = response.items[i+1];
+            title3 = item3.volumeInfo.title;
+            author3 = item3.volumeInfo.authors;
+            publisher3 = item3.volumeInfo.publisher;
+            bookLink3 = item3.volumeInfo.previewLink;
+            bookIsbn3 = item3.volumeInfo.industryIdentifiers[1].identifier
+            bookImg3 = (item3.volumeInfo.imageLinks) ? item3.volumeInfo.imageLinks.thumbnail : placeHldr ;
+
             
             salida.innerHTML += 
-                                 '<div class="row"> <div class="container">'+
+                                 '<div class="four columns">'+
                                   formatOutput(bookImg1, title1, author1, publisher1, bookLink1, bookIsbn) +
                                   formatOutput(bookImg2, title2, author2, publisher2, bookLink2, bookIsbn2) +
-                                  '</div> </div>';
+                                  formatOutput(bookImg3, title3, author3, publisher3, bookLink3, bookIsbn3) +
+                                  '</div>';
   
           console.log(salida);
           
         }
      }
   
-     function formatOutput(bookImg, title, author, publisher, bookLink, bookIsbn) {
+     function formatOutput(bookImg, title, author, bookIsbn) {
          
        var htmlCard = `
-                         <div class="for columns">
+                         
                            <div class="card">
-                            <img src="${bookImg}" class="img-book">
+                            <img src="${bookImg}" class="img-book u-full-width">
                                <div class="info-card">
                                   <h4>${title}</h4>
                                   <p>${author}</p>
-                                  <p>${publisher}</p>
-                                  <img src="img/estrellas.png">
                                   <p class="precio">$50 <span class="u-pull-right">$15</span> </p>
                                   <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="${bookIsbn}">Agregar al carrito</a>
                                 </div>
-                                </div>
-                          </div>`;
+                                </div>`;
        return htmlCard;
      }
      function displayError() {

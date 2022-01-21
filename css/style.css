@@ -153,6 +153,7 @@ ul {
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.05);
     background: #1d2124;
+    height: 570px ;
 }
 
 @media (min-width:550px){
@@ -167,6 +168,7 @@ ul {
 .info-card p,
 .card h4 {
     margin-bottom: 5px;
+    font-size: 12px;
 }
 .info-card .precio {
     text-decoration: line-through;
