@@ -1,3 +1,4 @@
+//Funciones para agregar libros al carrito
 
 const carrito = document.getElementById("carrito");
 const libros = document.getElementById("lista-libros");
@@ -131,7 +132,7 @@ function vaciarLocalStorage() {
 
 
 
-//buscador
+//Funciones para consultar api y mostrar libros en pantalla
 
 $(document).ready(function() {
     var item;
@@ -222,7 +223,7 @@ $(document).ready(function() {
                                <div class="info-card">
                                   <h4>${title}</h4>
                                   <p>${author}</p>
-                                  <p class="precio">$50 <span class="u-pull-right">$15</span> </p>
+                                  <p class="precio">$50<span class="u-pull-right">$15</span> </p>
                                   <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="${bookIsbn}">Agregar al carrito</a>
                                 </div>
                                 </div>`;
