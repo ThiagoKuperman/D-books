@@ -1,4 +1,4 @@
-/*
+
 const carrito = document.getElementById("carrito");
 const libros = document.getElementById("lista-libros");
 const listaLibros = document.querySelector("#lista-carrito tbody");
@@ -128,7 +128,7 @@ function eliminarLibroLocalStorage(libro) {
 function vaciarLocalStorage() {
     localStorage.clear();
 }
-*/
+
 
 
 //buscador
@@ -193,10 +193,11 @@ $(document).ready(function() {
             bookImg2 = (item2.volumeInfo.imageLinks) ? item2.volumeInfo.imageLinks.thumbnail : placeHldr ;
 
             
-            salida.innerHTML += '<div class="container">'+
+            salida.innerHTML += 
+                                 '<div class="row"> <div class="container">'+
                                   formatOutput(bookImg1, title1, author1, publisher1, bookLink1, bookIsbn) +
                                   formatOutput(bookImg2, title2, author2, publisher2, bookLink2, bookIsbn2) +
-                                  '</div>';
+                                  '</div> </div>';
   
           console.log(salida);
           
@@ -205,7 +206,7 @@ $(document).ready(function() {
   
      function formatOutput(bookImg, title, author, publisher, bookLink, bookIsbn) {
          
-       var htmlCard = `<div class="row">
+       var htmlCard = `
                          <div class="for columns">
                            <div class="card">
                             <img src="${bookImg}" class="img-book">
@@ -218,8 +219,7 @@ $(document).ready(function() {
                                   <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="${bookIsbn}">Agregar al carrito</a>
                                 </div>
                                 </div>
-                          </div>
-                     </div>`;
+                          </div>`;
        return htmlCard;
      }
      function displayError() {
