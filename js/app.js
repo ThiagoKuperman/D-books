@@ -1,4 +1,4 @@
-
+/*
 const carrito = document.getElementById("carrito");
 const libros = document.getElementById("lista-libros");
 const listaLibros = document.querySelector("#lista-carrito tbody");
@@ -128,33 +128,33 @@ function eliminarLibroLocalStorage(libro) {
 function vaciarLocalStorage() {
     localStorage.clear();
 }
-
+*/
 
 
 //buscador
 
 $(document).ready(function() {
     var item;
-    var outputList = document.getElementById("resultados");
+    var salida = document.getElementById("resultados");
     var bookUrl = "https://www.googleapis.com/books/v1/volumes?q=";
     var placeHldr = '<img src="https://via.placeholder.com/150">';
     var searchData;
   
     $("#buscar").click(function() {
-      outputList.innerHTML = ""; 
+      salida.innerHTML = ""; 
       document.body.style.backgroundImage = "url('')";
        searchData = $("#buscador").val();
        if(searchData === "" || searchData === null) {
          displayError();
        }
       else {
-         //console.log(searchData);
+        // console.log(searchData);
         // $.get("https://www.googleapis.com/books/v1/volumes?q="+searchData, getBookData());
-         $.ajax({
+        $.ajax({
             url: bookUrl + searchData,
             dataType: "json",
-            success: function (response) {
-               // console.log(response);
+            success: function(response) {
+              console.log(response)
                 if (response.totalItems === 0) {
                     alert("No hay resultados!.. Prueba otra vez:)");
                 }
@@ -176,29 +176,30 @@ $(document).ready(function() {
 
      function displayResults(response) {
         for (var i = 0; i < response.items.length; i+=2) {
-          item = response.items[i];
-          title1 = item.volumeInfo.title;
-          author1 = item.volumeInfo.authors;
-          publisher1 = item.volumeInfo.publisher;
-          bookLink1 = item.volumeInfo.previewLink;
-          bookIsbn = item.volumeInfo.industryIdentifiers[1].identifier;
-          bookImg1 = (item.volumeInfo.imageLinks) ? item.volumeInfo.imageLinks.thumbnail : placeHldr ;
-  
-          item2 = response.items[i+1];
-          title2 = item2.volumeInfo.title;
-          author2 = item2.volumeInfo.authors;
-          publisher2 = item2.volumeInfo.publisher;
-          bookLink2 = item2.volumeInfo.previewLink;
-          bookIsbn2 = item2.volumeInfo.industryIdentifiers[1].identifier;
-          bookImg2 = (item2.volumeInfo.imageLinks) ? item2.volumeInfo.imageLinks.thumbnail : placeHldr ;
-  
-          
-          outputList.innerHTML += '<div class="container">'+
+            item = response.items[i];
+            title1 = item.volumeInfo.title;
+            author1 = item.volumeInfo.authors;
+            publisher1 = item.volumeInfo.publisher;
+            bookLink1 = item.volumeInfo.previewLink;
+            bookIsbn = item.volumeInfo.industryIdentifiers[1].identifier
+            bookImg1 = (item.volumeInfo.imageLinks) ? item.volumeInfo.imageLinks.thumbnail : placeHldr ;
+    
+            item2 = response.items[i+1];
+            title2 = item2.volumeInfo.title;
+            author2 = item2.volumeInfo.authors;
+            publisher2 = item2.volumeInfo.publisher;
+            bookLink2 = item2.volumeInfo.previewLink;
+            bookIsbn2 = item2.volumeInfo.industryIdentifiers[1].identifier
+            bookImg2 = (item2.volumeInfo.imageLinks) ? item2.volumeInfo.imageLinks.thumbnail : placeHldr ;
+
+            
+            salida.innerHTML += '<div class="container">'+
                                   formatOutput(bookImg1, title1, author1, publisher1, bookLink1, bookIsbn) +
                                   formatOutput(bookImg2, title2, author2, publisher2, bookLink2, bookIsbn2) +
                                   '</div>';
   
-          console.log(outputList);
+          console.log(salida);
+          
         }
      }
   
@@ -211,12 +212,13 @@ $(document).ready(function() {
                                <div class="info-card">
                                   <h4>${title}</h4>
                                   <p>${author}</p>
+                                  <p>${publisher}</p>
                                   <img src="img/estrellas.png">
                                   <p class="precio">$50 <span class="u-pull-right">$15</span> </p>
                                   <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="${bookIsbn}">Agregar al carrito</a>
                                 </div>
+                                </div>
                           </div>
-                        </div>
                      </div>`;
        return htmlCard;
      }
