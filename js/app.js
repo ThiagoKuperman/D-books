@@ -182,7 +182,7 @@ $(document).ready(function() {
             author1 = item.volumeInfo.authors;
             publisher1 = item.volumeInfo.publisher;
             bookLink1 = item.volumeInfo.previewLink;
-            bookIsbn = item.volumeInfo.industryIdentifiers[1].identifier
+            bookIsbn = item.volumeInfo.industryIdentifiers[1].identifier;
             bookImg1 = (item.volumeInfo.imageLinks) ? item.volumeInfo.imageLinks.thumbnail : placeHldr ;
     
             item2 = response.items[i+1];
@@ -190,7 +190,7 @@ $(document).ready(function() {
             author2 = item2.volumeInfo.authors;
             publisher2 = item2.volumeInfo.publisher;
             bookLink2 = item2.volumeInfo.previewLink;
-            bookIsbn2 = item2.volumeInfo.industryIdentifiers[1].identifier
+            bookIsbn2 = item2.volumeInfo.industryIdentifiers[1].identifier;
             bookImg2 = (item2.volumeInfo.imageLinks) ? item2.volumeInfo.imageLinks.thumbnail : placeHldr ;
 
             item3 = response.items[i+1];
@@ -198,7 +198,7 @@ $(document).ready(function() {
             author3 = item3.volumeInfo.authors;
             publisher3 = item3.volumeInfo.publisher;
             bookLink3 = item3.volumeInfo.previewLink;
-            bookIsbn3 = item3.volumeInfo.industryIdentifiers[1].identifier
+            bookIsbn3 = item3.volumeInfo.industryIdentifiers[1].identifier;
             bookImg3 = (item3.volumeInfo.imageLinks) ? item3.volumeInfo.imageLinks.thumbnail : placeHldr ;
 
             
@@ -214,7 +214,7 @@ $(document).ready(function() {
         }
      }
   
-     function formatOutput(bookImg, title, author, bookIsbn) {
+     function formatOutput(bookImg, title, author, bookIsbn, price) {
          
        var htmlCard = `
                          
@@ -223,7 +223,7 @@ $(document).ready(function() {
                                <div class="info-card">
                                   <h4>${title}</h4>
                                   <p>${author}</p>
-                                  <p class="precio">$50<span class="u-pull-right">$15</span> </p>
+                                  <p class="precio"><span class="u-pull-right">Sin precio</span> </p>
                                   <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="${bookIsbn}">Agregar al carrito</a>
                                 </div>
                                 </div>`;

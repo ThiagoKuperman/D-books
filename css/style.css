@@ -7,6 +7,9 @@
     width: 70px;
     justify-content: center;
 }
+.img-carrito{
+    padding-top: 15%;
+}
 .align{
     display: flex;
     align-items: center;
